@@ -142,33 +142,56 @@
 
 //Using state in react. {Usestate}
 
+// import {useState} from 'react';
+
+// export default function States(){
+//   return (
+//     <>
+//     <h1>Two button that update seperatley but eith the same one logic used in sttes react</h1>
+//     <MyButton />
+//      <MyButton />
+//       <MyButton />
+//        <MyButton />
+
+    
+    
+//     </>
+//   )
+// }
+
+
+// function MyButton(){
+//   const [count , setCount] = useState(0);
+
+//   function handleClick(){
+//     setCount(count+1);
+//   }
+
+//   return(
+//     <button onClick={handleClick}> Click Me Count: {count}</button>
+//   )
+// }
+
+
+
+//using Props in react 
+
 import {useState} from 'react';
 
 export default function States(){
+  const [count, setCount] = useState(0);
+
+  function handleClick(){
+    setCount(count + 1);
+  }
+
   return (
     <>
-    <h1>Two button that update seperatley but eith the same one logic used in sttes react</h1>
-    <MyButton />
-     <MyButton />
-      <MyButton />
-
-       <MyButton />
-
+    <h1>Two button that update with each other used in states react</h1>
+    <button onClick={handleClick}> Click Me Count: {count}</button>
+    <button onClick={handleClick}> Click Me Count: {count}</button>
     
     
     </>
-  )
-}
-
-
-function MyButton(){
-  const [count , setCount] = useState(0);
-
-  function handleClick(){
-    setCount(count+1);
-  }
-
-  return(
-    <button onClick={handleClick}> Click Me Count: {count}</button>
   )
 }
