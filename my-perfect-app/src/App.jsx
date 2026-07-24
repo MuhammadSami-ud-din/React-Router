@@ -187,11 +187,19 @@ export default function States(){
 
   return (
     <>
-    <h1>Two button that update with each other used in states react</h1>
-    <button onClick={handleClick}> Click Me Count: {count}</button>
-    <button onClick={handleClick}> Click Me Count: {count}</button>
+    <h1>Two button that update with each others used in states react</h1>
+    <MyButton count={count} onClick={handleClick} />
+    <MyButton count={count} onClick={handleClick} />
     
     
     </>
   )
+}
+
+
+function MyButton({count, onClick}){
+  return(
+   <button onClick={onClick}> Click Me Count: {count}</button>
+  )
+
 }
