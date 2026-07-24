@@ -1,4 +1,5 @@
-// import profilePic from './WhatsApp Image 2026-04-17 at 21.20.43.jpeg';
+import profilePic from './WhatsApp Image 2026-04-17 at 21.20.43.jpeg';
+import profilePicZ from './Screenshot 2026-06-19 at 10.40.26 PM.png';
 // // function MyButton() {
 // //   return (
 // //     <button className="sami">
@@ -18,39 +19,46 @@
 
 
 
-// //escaping to javascript from jsx
+//escaping to javascript from jsx
 // const users = [{
 //  Name: "Muhammad Sami ud din",
 //   age : 19,
-//   image: profilePic
+//   image: profilePic,
+//   description: "I am a student and I am a good person. Aik bnda hai wo apne ap ko 6 mahine bara btata hai budha khusar kahin ka.",
+//   occupation: "Student"
 // },{
 //   Name: "Muhammad Zorain Haider",
-//   age: 25,
-//   image: profilePic
+//   age: 19.8,
+//   image: profilePicZ,
+//   description: "I am a teacher and I am a very bad  person. Aur aik baat btaun mein Sami se 6 mahine bara hun mene 6 mahine pehle a kr adhi dunya fatah kr li thi apni khachon se",
+//   occupation:"Full time charsi at nehr wala pull"
 // }];
 
 
 
 
-// // function MyButton() {
-// //   return (
-// //     <button className="sami">
-// //       Click me
-// //       </button>
-// //   );
-// // }
+// function MyButton() {
+//   return (
+//     <button className="sami">
+//       Click me
+//       </button>
+//   );
+// }
 
 // export default function App(){
 // return(
 //   <div>
 //  { 
 //   users.map((user) => {
-//   if(user.age < 20){
+//   if(user.age < 19.5){
 //     return(
 //       <div>
 //         <h1>{user.Name}</h1>
 //         <h1>{user.age}🫣junior</h1>
 //         <img src={user.image} alt="Profile"  className="avatar"/>
+//        <p>Description: {user.description}</p>
+//          <p>Occupation: {user.occupation}</p>
+
 //       </div>
 //     );
 //   }else{
@@ -59,6 +67,8 @@
 //         <h1 >{user.Name}</h1>
 //         <h1>{user.age}😂senior</h1>
 //         <img src={user.image} alt="Profile"  className="avatar"/>
+//         <p>Description: {user.description}</p>
+//          <p>Occupation: {user.occupation}</p>
 //       </div>
 //     );
 //   }})
@@ -176,30 +186,97 @@
 
 //using Props in react 
 
-import {useState} from 'react';
+// import {useState} from 'react';
 
-export default function States(){
-  const [count, setCount] = useState(0);
+// export default function States(){
+//   const [count, setCount] = useState(0);
 
-  function handleClick(){
-    setCount(count + 1);
-  }
+//   function handleClick(){
+//     setCount(count + 1);
+//   }
 
+//   return (
+//     <>
+//     <h1>Two button that update with each others used in states react</h1>
+//     <MyButton count={count} onClick={handleClick} />
+//     <MyButton count={count} onClick={handleClick} />
+    
+    
+//     </>
+//   )
+// }
+
+
+// function MyButton({count, onClick}){
+//   return(
+//    <button onClick={onClick}> Click Me Count: {count}</button>
+//   )
+
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+//escaping to javascript from jsx
+
+
+const users = [{
+  Name: "Muhammad Sami ud din",
+  age : 19,
+  image: profilePic,
+  description: "I am a student and I am a good person. Aik bnda hai wo apne ap ko 6 mahine bara btata hai budha khusar kahin ka.",
+  occupation: "Student"
+},{
+  Name: "Muhammad Zorain Haider",
+  age: 19.8,
+  image: profilePicZ,
+  description: "I am a teacher and I am a very bad person. Aur aik baat btaun mein Sami se 6 mahine bara hun mene 6 mahine pehle a kr adhi dunya fatah kr li thi apni khachon se",
+  occupation:"Full time charsi at nehr wala pull"
+}];
+
+export default function App(){
   return (
     <>
-    <h1>Two button that update with each others used in states react</h1>
-    <MyButton count={count} onClick={handleClick} />
-    <MyButton count={count} onClick={handleClick} />
-    
-    
+      {users.map((user, i)=> {
+        // 1. FIXED: Removed quotation marks and used {} to pass actual data values
+        if (user.age < 19.5) {
+          return (
+            <Condition 
+              key={i}
+              name={user.Name} 
+              age={user.age} 
+              img={user.image} 
+              desc={user.description} 
+              occ={user.occupation} 
+            />
+          )
+        } else {
+          return null;
+        }
+      })}
     </>
   )
 }
 
-
-function MyButton({count, onClick}){
-  return(
-   <button onClick={onClick}> Click Me Count: {count}</button>
-  )
-
+// 2. FIXED: Added curly braces around properties so React destructures them correctly
+// 3. FIXED: Removed the accidental rogue letter "s" sitting right after the return statement
+function Condition({ name, age, img, desc, occ }) {
+    return (
+      <div>
+        <h1>{name}</h1>
+        <h1>{age}</h1>
+        <img src={img} alt="Profile" className="avatar" />
+        <p>Description: {desc}</p>
+        <p>Occupation: {occ}</p>
+      </div>
+    );
 }
