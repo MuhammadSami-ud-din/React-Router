@@ -89,37 +89,50 @@
 
 
 //Rendering list items in react using map function
-const products = [
-  { title: 'Cabbage', isFruit: false, id: 1 },
-  { title: 'Garlic', isFruit: false, id: 2 },
-  { title: 'Apple', isFruit: true, id: 3 },
-];
+// const products = [
+//   { title: 'Cabbage', isFruit: false, id: 1 },
+//   { title: 'Garlic', isFruit: false, id: 2 },
+//   { title: 'Apple', isFruit: true, id: 3 },
+// ];
 
 
 
 
-export default function productList() {
+// export default function productList() {
   
   
-   const ProductItems = products.map(product => 
-      <li key= {product.id}
-      style={{
-        color: product.isFruit ? 'magenta' : 'pink'
-      }}>
-        {product.title}
-        </li>
-    );
+//    const ProductItems = products.map(product => 
+//       <li key= {product.id}
+//       style={{
+//         color: product.isFruit ? 'magenta' : 'pink'
+//       }}>
+//         {product.title}
+//         </li>
+//     );
   
   
-  return (
-    <>
-    <ul>{ProductItems}</ul>
+//   return (
+//     <>
+//     <ul>{ProductItems}</ul>  
+//     </>
     
-    
-    </>
-    
-  );
+//   );
+// }
+
+
+
+
+
+// Event responding
+
+
+export default function ClickButton(){
   
-  
-   
+  function handleClick(){
+    alert("You Clicked me my man 😎 Awwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww");
+  }
+
+  return(
+    <button onClick={handleClick}>Click Me</button>
+  )
 }
