@@ -1,0 +1,9 @@
+.sami{
+  border: 1px solid red;
+}
+
+.avatar{
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+}
