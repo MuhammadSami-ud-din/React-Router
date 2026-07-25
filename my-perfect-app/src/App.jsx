@@ -1,5 +1,7 @@
-import profilePic from './WhatsApp Image 2026-04-17 at 21.20.43.jpeg';
-import profilePicZ from './Screenshot 2026-06-19 at 10.40.26 PM.png';
+// import profilePic from './WhatsApp Image 2026-04-17 at 21.20.43.jpeg';
+// import profilePicZ from './Screenshot 2026-06-19 at 10.40.26 PM.png';
+ import video from './Mae Ni Mae Mere Geetan De Nainan Wich.mp4';
+// import { useState } from 'react';
 // // function MyButton() {
 // //   return (
 // //     <button className="sami">
@@ -229,54 +231,96 @@ import profilePicZ from './Screenshot 2026-06-19 at 10.40.26 PM.png';
 //escaping to javascript from jsx
 
 
-const users = [{
-  Name: "Muhammad Sami ud din",
-  age : 19,
-  image: profilePic,
-  description: "I am a student and I am a good person. Aik bnda hai wo apne ap ko 6 mahine bara btata hai budha khusar kahin ka.",
-  occupation: "Student"
-},{
-  Name: "Muhammad Zorain Haider",
-  age: 19.8,
-  image: profilePicZ,
-  description: "I am a teacher and I am a very bad person. Aur aik baat btaun mein Sami se 6 mahine bara hun mene 6 mahine pehle a kr adhi dunya fatah kr li thi apni khachon se",
-  occupation:"Full time charsi at nehr wala pull"
-}];
+// const users = [{
+//   Name: "Muhammad Sami ud din",
+//   age : 19,
+//   image: profilePic,
+//   description: "I am a student and I am a good person. Aik bnda hai wo apne ap ko 6 mahine bara btata hai budha khusar kahin ka.",
+//   occupation: "Student"
+// },{
+//   Name: "Muhammad Zorain Haider",
+//   age: 19.8,
+//   image: profilePicZ,
+//   description: "I am a teacher and I am a very bad person. Aur aik baat btaun mein Sami se 6 mahine bara hun mene 6 mahine pehle a kr adhi dunya fatah kr li thi apni khachon se",
+//   occupation:"Full time charsi at nehr wala pull"
+// }];
 
-export default function App(){
-  return (
-    <>
-      {users.map((user, i)=> {
-        // 1. FIXED: Removed quotation marks and used {} to pass actual data values
-        if (user.age < 19.5) {
-          return (
-            <Condition 
-              key={i}
-              name={user.Name} 
-              age={user.age} 
-              img={user.image} 
-              desc={user.description} 
-              occ={user.occupation} 
-            />
-          )
-        } else {
-          return null;
-        }
-      })}
-    </>
+// export default function App(){
+//   return (
+//     <>
+//       {users.map((user, i)=> {
+       
+//         if (user.age < 19.5) {
+//           return (
+//             <Condition 
+//               key={i}
+//               name={user.Name} 
+//               age={user.age} 
+//               img={user.image} 
+//               desc={user.description} 
+//               occ={user.occupation} 
+//             />
+//           )
+//         } else {
+//           return null;
+//         }
+//       })}
+//     </>
+//   )
+// }
+
+
+// function Condition({ name, age, img, desc, occ }) {
+//     return (
+//       <div>
+//         <h1>{name}</h1>
+//         <h1>{age}</h1>
+//         <img src={img} alt="Profile" className="avatar" />
+//         <p>Description: {desc}</p>
+//         <p>Occupation: {occ}</p>
+//       </div>
+//     );
+// }
+
+
+
+
+
+
+
+// UseEffect in React Very Imprortant
+// what it does is stop the running of that specific code in it until te page of react companent is loadedand done then it does its rendering and also to change the DOM it should be used because the react have nothing to do with the DOM
+
+import {useEffect , useRef , useState } from 'react'
+
+
+function VideoPlayer({isPlaying , src}){
+  const ref = useRef(null);
+
+  useEffect(()=>{
+    if(isPlaying){
+      ref.current.play();
+    }else{
+      ref.current.pause();
+    }
+  })
+
+  return(
+    <video src={src} ref={ref}></video>
   )
 }
 
-// 2. FIXED: Added curly braces around properties so React destructures them correctly
-// 3. FIXED: Removed the accidental rogue letter "s" sitting right after the return statement
-function Condition({ name, age, img, desc, occ }) {
-    return (
-      <div>
-        <h1>{name}</h1>
-        <h1>{age}</h1>
-        <img src={img} alt="Profile" className="avatar" />
-        <p>Description: {desc}</p>
-        <p>Occupation: {occ}</p>
-      </div>
-    );
+
+export default function VideoPlayerMind(){
+  const [isPlaying , setIsPlaying] = useState(false);
+
+  return(
+    <>
+    <button onClick={()=>{
+      setIsPlaying(!isPlaying)}}> {isPlaying ? 'pause' : 'play'} </button>
+    <VideoPlayer src={video}  isPlaying={isPlaying} alt="video"></VideoPlayer>
+    
+    
+    </>
+  )
 }
