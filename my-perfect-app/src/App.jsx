@@ -1,8 +1,8 @@
 // import profilePic from './WhatsApp Image 2026-04-17 at 21.20.43.jpeg';
 // import profilePicZ from './Screenshot 2026-06-19 at 10.40.26 PM.png';
  
-import video from './Mae Ni Mae Mere Geetan De Nainan Wich.mp4';
- import video1 from "./Selahaddin Şemse'yi Arıyor - Kudüs Fatihi Selahaddin Eyyubi 2. Sezon Özel Sahneler_.mp4";
+// import video from './Mae Ni Mae Mere Geetan De Nainan Wich.mp4';
+//  import video1 from "./Selahaddin Şemse'yi Arıyor - Kudüs Fatihi Selahaddin Eyyubi 2. Sezon Özel Sahneler_.mp4";
 // import { useState } from 'react';
 // // function MyButton() {
 // //   return (
@@ -336,46 +336,86 @@ import video from './Mae Ni Mae Mere Geetan De Nainan Wich.mp4';
 
 
 
-import {useEffect  } from 'react'
+// import {useEffect  } from 'react'
 
-function connection(){
- return{
-   connect(){
-    console.log("connecting............. ruk ja yaar sbr kr kr rha hun na .......connected")
-  }
-,
-   disconnect(){
-      console.log("disconnecting............. mil gya sakoon.......disconnected")
-}
+// function connection(){
+//  return{
+//    connect(){
+//     console.log("connecting............. ruk ja yaar sbr kr kr rha hun na .......connected")
+//   }
+// ,
+//    disconnect(){
+//       console.log("disconnecting............. mil gya sakoon.......disconnected")
+// }
 
 
-}
+// }
   
-};
+// };
 
 
-export default function App(){
+// export default function App(){
   
-  useEffect(()=>{
-    const connection1 = connection();
-    connection1.connect();
-   return ()=>{
-    connection1.disconnect();
-   }
+//   useEffect(()=>{
+//     const connection1 = connection();
+//     connection1.connect();
+//    return ()=>{
+//     connection1.disconnect();
+//    }
 
 
-  },[])
-}
+//   },[])
+// }
 
 
 
-//pitfall
+// //pitfall
 
- const connectionRef = useRef(null);
+//  const connectionRef = useRef(null);
+//   useEffect(() => {
+//     // 🚩 This wont fix the bug!!!
+//     if (!connectionRef.current) {
+//       connectionRef.current = createConnection();
+//       connectionRef.current.connect();
+//     }
+//   }, []);
+
+
+
+
+import { useState, useEffect } from 'react';
+
+function ScrollLogger() {
   useEffect(() => {
-    // 🚩 This wont fix the bug!!!
-    if (!connectionRef.current) {
-      connectionRef.current = createConnection();
-      connectionRef.current.connect();
+    function handleScroll() {
+      console.log('📜 Scroll Position:', window.scrollY);
     }
+
+    console.log('➕ Subscribing to scroll...');
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      console.log('➖ Unsubscribing from scroll...');
+      window.removeEventListener('scroll', handleScroll);
+    };
   }, []);
+
+  return (
+    <div style={{ height: '200vh', padding: '20px' }}>
+      <h2>Scroll down and watch the console log sequence!</h2>
+    </div>
+  );
+}
+
+export default function App() {
+  const [showLogger, setShowLogger] = useState(true);
+
+  return (
+    <div>
+      <button onClick={() => setShowLogger(!showLogger)}>
+        {showLogger ? 'Unmount Logger' : 'Mount Logger'}
+      </button>
+      {showLogger && <ScrollLogger />}
+    </div>
+  );
+}
