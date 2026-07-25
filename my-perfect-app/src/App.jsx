@@ -307,7 +307,7 @@ function VideoPlayer({isPlaying , src}){
       console.log("pause")
 
     }
-  }[isPlaying])
+  },[isPlaying])
 
   return(
     <video src={src} ref={ref} />
