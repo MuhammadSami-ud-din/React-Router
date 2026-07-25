@@ -366,3 +366,16 @@ export default function App(){
 
   },[])
 }
+
+
+
+//pitfall
+
+ const connectionRef = useRef(null);
+  useEffect(() => {
+    // 🚩 This wont fix the bug!!!
+    if (!connectionRef.current) {
+      connectionRef.current = createConnection();
+      connectionRef.current.connect();
+    }
+  }, []);
