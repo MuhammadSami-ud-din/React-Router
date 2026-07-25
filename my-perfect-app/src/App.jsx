@@ -381,41 +381,92 @@
 //   }, []);
 
 
+// subsrcbing in effects
+
+// import { useState, useEffect } from 'react';
+
+// function ScrollLogger() {
+//   useEffect(() => {
+//     function handleScroll() {
+//       console.log('📜 Scroll Position:', window.scrollY);
+//     }
+
+//     console.log('➕ Subscribing to scroll...');
+//     window.addEventListener('scroll', handleScroll);
+
+//     return () => {
+//       console.log('➖ Unsubscribing from scroll...');
+//       window.removeEventListener('scroll', handleScroll);
+//     };
+//   }, []);
+
+//   return (
+//     <div style={{ height: '200vh', padding: '20px' }}>
+//       <h2>Scroll down and watch the console log sequence!</h2>
+//     </div>
+//   );
+// }
+
+// export default function App() {
+//   const [showLogger, setShowLogger] = useState(true);
+
+//   return (
+//     <div>
+//       <button onClick={() => setShowLogger(!showLogger)}>
+//         {showLogger ? 'Unmount Logger' : 'Mount Logger'}
+//       </button>
+//       {showLogger && <ScrollLogger />}
+//     </div>
+//   );
+// }
 
 
+
+
+
+//practice
 import { useState, useEffect } from 'react';
 
-function ScrollLogger() {
+function Playground() {
+  const [text, setText] = useState('a');
+
   useEffect(() => {
-    function handleScroll() {
-      console.log('📜 Scroll Position:', window.scrollY);
+    function onTimeout() {
+      console.log('⏰ ' + text);
     }
 
-    console.log('➕ Subscribing to scroll...');
-    window.addEventListener('scroll', handleScroll);
+    console.log('🔵 Schedule "' + text + '" log');
+    const timeoutId = setTimeout(onTimeout, 3000);
 
     return () => {
-      console.log('➖ Unsubscribing from scroll...');
-      window.removeEventListener('scroll', handleScroll);
+      console.log('🟡 Cancel "' + text + '" log');
+      clearTimeout(timeoutId);
     };
-  }, []);
+  }, [text]);
 
   return (
-    <div style={{ height: '200vh', padding: '20px' }}>
-      <h2>Scroll down and watch the console log sequence!</h2>
-    </div>
+    <>
+      <label>
+        What to log:{' '}
+        <input
+          value={text}
+          onChange={e => setText(e.target.value)}
+        />
+      </label>
+      <h1>{text}</h1>
+    </>
   );
 }
 
 export default function App() {
-  const [showLogger, setShowLogger] = useState(true);
-
+  const [show, setShow] = useState(false);
   return (
-    <div>
-      <button onClick={() => setShowLogger(!showLogger)}>
-        {showLogger ? 'Unmount Logger' : 'Mount Logger'}
+    <>
+      <button onClick={() => setShow(!show)}>
+        {show ? 'Unmount' : 'Mount'} the component
       </button>
-      {showLogger && <ScrollLogger />}
-    </div>
+      {show && <hr />}
+      {show && <Playground />}
+    </>
   );
 }
