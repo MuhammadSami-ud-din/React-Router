@@ -1,6 +1,7 @@
 // import profilePic from './WhatsApp Image 2026-04-17 at 21.20.43.jpeg';
 // import profilePicZ from './Screenshot 2026-06-19 at 10.40.26 PM.png';
- import video from './Mae Ni Mae Mere Geetan De Nainan Wich.mp4';
+ 
+import video from './Mae Ni Mae Mere Geetan De Nainan Wich.mp4';
  import video1 from "./Selahaddin Şemse'yi Arıyor - Kudüs Fatihi Selahaddin Eyyubi 2. Sezon Özel Sahneler_.mp4";
 // import { useState } from 'react';
 // // function MyButton() {
@@ -292,42 +293,74 @@
 // UseEffect in React Very Imprortant
 // what it does is stop the running of that specific code in it until te page of react companent is loadedand done then it does its rendering and also to change the DOM it should be used because the react have nothing to do with the DOM
 
-import {useEffect , useRef , useState } from 'react'
+// import {useEffect , useRef , useState } from 'react'
 
 
-function VideoPlayer({isPlaying , src}){
-  const ref = useRef(null);
+// function VideoPlayer({isPlaying , src}){
+//   const ref = useRef(null);
 
-  useEffect(()=>{
-    if(isPlaying){
-      ref.current.play();
-      console.log("play")
-    }else{
-      ref.current.pause();
-      console.log("pause")
+//   useEffect(()=>{
+//     if(isPlaying){
+//       ref.current.play();
+//       console.log("play")
+//     }else{
+//       ref.current.pause();
+//       console.log("pause")
 
-    }
-  },[isPlaying])
+//     }
+//   },[isPlaying])
 
-  return(
-    <video src={src} ref={ref} />
-  )
+//   return(
+//     <video src={src} ref={ref} />
+//   )
+// }
+
+
+// export default function VideoPlayerMind(){
+//   const [isPlaying , setIsPlaying] = useState(false);
+//   const [text , setText] = useState('');
+
+//   return(
+//     <>
+//     <input value={text}  onChange={e => setText(e.target.value)} />
+//     <button onClick={()=>{
+      
+//       setIsPlaying(!isPlaying)}}> {isPlaying ? 'pause' : 'play'} </button>
+//     <VideoPlayer src={video}  isPlaying={isPlaying} alt="video"></VideoPlayer>
+    
+    
+//     </>
+//   )
+// }
+
+
+
+
+import {useEffect  } from 'react'
+
+function connection(){
+ return{
+   connect(){
+    console.log("connecting............. ruk ja yaar sbr kr kr rha hun na .......connected")
+  }
+,
+   disconnect(){
+      console.log("disconnecting............. mil gya sakoon.......disconnected")
 }
 
 
-export default function VideoPlayerMind(){
-  const [isPlaying , setIsPlaying] = useState(false);
-  const [text , setText] = useState('');
+}
+  
+};
 
-  return(
-    <>
-    <input value={text}  onChange={e => setText(e.target.value)} />
-    <button onClick={()=>{
-      
-      setIsPlaying(!isPlaying)}}> {isPlaying ? 'pause' : 'play'} </button>
-    <VideoPlayer src={video}  isPlaying={isPlaying} alt="video"></VideoPlayer>
-    
-    
-    </>
-  )
+
+export default function App(){
+  
+  useEffect(()=>{
+    const connection1 = connection();
+    connection1.connect();
+
+
+
+  },[])
 }
