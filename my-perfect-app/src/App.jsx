@@ -359,7 +359,9 @@ export default function App(){
   useEffect(()=>{
     const connection1 = connection();
     connection1.connect();
-
+   return ()=>{
+    connection1.disconnect();
+   }
 
 
   },[])
