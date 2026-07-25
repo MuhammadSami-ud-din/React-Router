@@ -1,6 +1,7 @@
 // import profilePic from './WhatsApp Image 2026-04-17 at 21.20.43.jpeg';
 // import profilePicZ from './Screenshot 2026-06-19 at 10.40.26 PM.png';
  import video from './Mae Ni Mae Mere Geetan De Nainan Wich.mp4';
+ import video1 from "./Selahaddin Şemse'yi Arıyor - Kudüs Fatihi Selahaddin Eyyubi 2. Sezon Özel Sahneler_.mp4";
 // import { useState } from 'react';
 // // function MyButton() {
 // //   return (
@@ -300,23 +301,29 @@ function VideoPlayer({isPlaying , src}){
   useEffect(()=>{
     if(isPlaying){
       ref.current.play();
+      console.log("play")
     }else{
       ref.current.pause();
+      console.log("pause")
+
     }
-  })
+  }[isPlaying])
 
   return(
-    <video src={src} ref={ref}></video>
+    <video src={src} ref={ref} />
   )
 }
 
 
 export default function VideoPlayerMind(){
   const [isPlaying , setIsPlaying] = useState(false);
+  const [text , setText] = useState('');
 
   return(
     <>
+    <input value={text}  onChange={e => setText(e.target.value)} />
     <button onClick={()=>{
+      
       setIsPlaying(!isPlaying)}}> {isPlaying ? 'pause' : 'play'} </button>
     <VideoPlayer src={video}  isPlaying={isPlaying} alt="video"></VideoPlayer>
     
