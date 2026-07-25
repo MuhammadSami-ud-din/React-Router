@@ -425,48 +425,104 @@
 
 
 //practice
-import { useState, useEffect } from 'react';
+// import { useState, useEffect } from 'react';
 
-function Playground() {
-  const [text, setText] = useState('a');
+// function Playground() {
+//   const [text, setText] = useState('a');
 
-  useEffect(() => {
-    function onTimeout() {
-      console.log('⏰ ' + text);
-    }
+//   useEffect(() => {
+//     function onTimeout() {
+//       console.log('⏰ ' + text);
+//     }
 
-    console.log('🔵 Schedule "' + text + '" log');
-    const timeoutId = setTimeout(onTimeout, 3000);
+//     console.log('🔵 Schedule "' + text + '" log');
+//     const timeoutId = setTimeout(onTimeout, 3000);
 
-    return () => {
-      console.log('🟡 Cancel "' + text + '" log');
-      clearTimeout(timeoutId);
-    };
-  }, [text]);
+//     return () => {
+//       console.log('🟡 Cancel "' + text + '" log');
+//       clearTimeout(timeoutId);
+//     };
+//   }, [text]);
 
-  return (
-    <>
-      <label>
-        What to log:{' '}
-        <input
-          value={text}
-          onChange={e => setText(e.target.value)}
-        />
-      </label>
-      <h1>{text}</h1>
+//   return (
+//     <>
+//       <label>
+//         What to log:{' '}
+//         <input
+//           value={text}
+//           onChange={e => setText(e.target.value)}
+//         />
+//       </label>
+//       <h1>{text}</h1>
+//     </>
+//   );
+// }
+
+// export default function App() {
+//   const [show, setShow] = useState(false);
+//   return (
+//     <>
+//       <button onClick={() => setShow(!show)}>
+//         {show ? 'Unmount' : 'Mount'} the component
+//       </button>
+//       {show && <hr />}
+//       {show && <Playground />}
+//     </>
+//   );
+// }
+
+
+
+
+
+//practice
+
+
+ import { useState, useEffect } from 'react';
+
+ function Effe(){
+
+
+  const [value , setValue] = useState('a');
+useEffect(()=>{
+  
+   
+    console.log(`schedule ${value} log`);
+   const ontimeout = setTimeout(()=>{
+        console.log("✋"+ value);
+   },3000)
+
+   
+   return(()=>{
+    
+  console.log(` cance log`);
+  clearTimeout(ontimeout);
+  
+  
+   })
+
+  
+},[value])
+
+ return(
+  <>
+    <h1 >{value}</h1>
+    <input value={value} onChange={(e)=> setValue(e.target.value)} />
     </>
-  );
-}
+   );
+ }
 
-export default function App() {
-  const [show, setShow] = useState(false);
-  return (
-    <>
-      <button onClick={() => setShow(!show)}>
-        {show ? 'Unmount' : 'Mount'} the component
-      </button>
-      {show && <hr />}
-      {show && <Playground />}
-    </>
-  );
+export default function App(){
+  const [isShow , setIsShow] = useState(false);
+  
+
+return(
+  <>
+  <button value={isShow} onClick={()=>setIsShow(!isShow)}>{isShow ? "dont show" : "show"}</button>
+ 
+  {isShow && <Effe /> }
+  
+  </>
+)
+
 }
