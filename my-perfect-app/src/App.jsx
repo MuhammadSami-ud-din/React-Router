@@ -478,51 +478,90 @@
 //practice
 
 
- import { useState, useEffect } from 'react';
+//  import { useState, useEffect } from 'react';
 
- function Effe(){
+//  function Effe(){
 
 
-  const [value , setValue] = useState('a');
-useEffect(()=>{
+//   const [value , setValue] = useState('a');
+// useEffect(()=>{
   
    
-    console.log(`schedule ${value} log`);
-   const ontimeout = setTimeout(()=>{
-        console.log("✋"+ value);
-   },3000)
+//     console.log(`schedule ${value} log`);
+//    const ontimeout = setTimeout(()=>{
+//         console.log("✋"+ value);
+//    },3000)
 
    
-   return(()=>{
+//    return(()=>{
     
-  console.log(` cance log`);
-  clearTimeout(ontimeout);
+//   console.log(` cance log`);
+//   clearTimeout(ontimeout);
   
   
-   })
+//    })
 
   
-},[value])
+// },[value])
 
- return(
-  <>
-    <h1 >{value}</h1>
-    <input value={value} onChange={(e)=> setValue(e.target.value)} />
-    </>
-   );
- }
+//  return(
+//   <>
+//     <h1 >{value}</h1>
+//     <input value={value} onChange={(e)=> setValue(e.target.value)} />
+//     </>
+//    );
+//  }
 
-export default function App(){
-  const [isShow , setIsShow] = useState(false);
+// export default function App(){
+//   const [isShow , setIsShow] = useState(false);
   
 
-return(
-  <>
-  <button value={isShow} onClick={()=>setIsShow(!isShow)}>{isShow ? "dont show" : "show"}</button>
+// return(
+//   <>
+//   <button value={isShow} onClick={()=>setIsShow(!isShow)}>{isShow ? "dont show" : "show"}</button>
  
-  {isShow && <Effe /> }
+//   {isShow && <Effe /> }
+  
+//   </>
+// )
+
+// }
+
+
+
+// import { useContext } from 'react';
+import { Heading} from './heading.jsx'
+import Section from './section.jsx';
+
+export default function Example(){
+return (
+  <>
+  <Section level={1}>
+    <Heading>Heading</Heading>
+    <Heading>Heading</Heading>
+    <Heading>Heading</Heading>
+    <Heading>Heading</Heading>
+
+  </Section>
+  <Section level={2}>
+    <Heading>sub-Heading</Heading>
+   <Heading>sub-Heading</Heading>
+   <Heading>sub-Heading</Heading>
+   <Heading>sub-Heading</Heading>
+  </Section>
+  <Section level={3}>
+    <Heading>sub-sub-Heading</Heading>
+   <Heading>sub-sub-Heading</Heading>
+   <Heading>sub-sub-Heading</Heading>
+   <Heading>sub-sub-Heading</Heading>
+    
+  </Section>
+  
   
   </>
 )
 
+
 }
+
+
