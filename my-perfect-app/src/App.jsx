@@ -652,7 +652,11 @@
 
 //react router
 
+//Notes : Note that index routes can't have children. If you're expecting that behavior, you probably want a layout route.
+//You can make a route segment optional by adding a ? to the end of the segment.
+
 import { Routes , Route } from "react-router";
+
 
 function Home(){
   return(
