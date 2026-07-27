@@ -1,5 +1,6 @@
 // import profilePic from './WhatsApp Image 2026-04-17 at 21.20.43.jpeg';
 // import profilePicZ from './Screenshot 2026-06-19 at 10.40.26 PM.png';
+
  
 // import video from './Mae Ni Mae Mere Geetan De Nainan Wich.mp4';
 //  import video1 from "./Selahaddin Şemse'yi Arıyor - Kudüs Fatihi Selahaddin Eyyubi 2. Sezon Özel Sahneler_.mp4";
@@ -529,39 +530,118 @@
 
 
 
+//useContext 
+//You pass a level prop to the <Section>.
+// Section wraps its children into <LevelContext value={level}>.
+// Heading asks the closest value of LevelContext above with useContext(LevelContext).
+
+
 // import { useContext } from 'react';
-import { Heading} from './heading.jsx'
-import Section from './section.jsx';
+// import { Heading} from './heading.jsx'
+// import Section from './section.jsx';
 
-export default function Example(){
-return (
-  <>
-  <Section level={1}>
-    <Heading>Heading</Heading>
-    <Heading>Heading</Heading>
-    <Heading>Heading</Heading>
-    <Heading>Heading</Heading>
+// export default function Example(){
+// return (
+//   <>
+//   <Section level={1}>
+//     <Heading>Heading</Heading>
+//     <Heading>Heading</Heading>
+//     <Heading>Heading</Heading>
+//     <Heading>Heading</Heading>
 
-  </Section>
-  <Section level={2}>
-    <Heading>sub-Heading</Heading>
-   <Heading>sub-Heading</Heading>
-   <Heading>sub-Heading</Heading>
-   <Heading>sub-Heading</Heading>
-  </Section>
-  <Section level={3}>
-    <Heading>sub-sub-Heading</Heading>
-   <Heading>sub-sub-Heading</Heading>
-   <Heading>sub-sub-Heading</Heading>
-   <Heading>sub-sub-Heading</Heading>
+//   </Section>
+//   <Section level={2}>
+//     <Heading>sub-Heading</Heading>
+//    <Heading>sub-Heading</Heading>
+//    <Heading>sub-Heading</Heading>
+//    <Heading>sub-Heading</Heading>
+//   </Section>
+//   <Section level={3}>
+//     <Heading>sub-sub-Heading</Heading>
+//    <Heading>sub-sub-Heading</Heading>
+//    <Heading>sub-sub-Heading</Heading>
+//    <Heading>sub-sub-Heading</Heading>
     
-  </Section>
+//   </Section>
   
   
-  </>
-)
+//   </>
+// )
 
 
+
+// }
+
+
+
+//Challange 
+
+
+// function check(){
+//   const list = [{
+//     img : profilePic,
+//     describe : "Sami is a very good person and also he is a hard"
+//   },
+// {
+//   img : profilePicZ,
+//   describe : "haider is a very good person and also he is a hard"
+// }]
+
+
+// }
+
+// export default function BigLight(){
+//   return(
+//     <>
+//     <input type="checkbox" />
+
+//     </>
+    
+//   )
+// }
+
+
+
+
+
+
+//practice
+import {  useState } from "react";
+
+
+export default function App (){
+   const [isShow, setIsShow] = useState(false);
+   return(
+    <>
+    <button value={isShow} onClick={()=> setIsShow(!isShow)}>{isShow ? "dont show" : "show"}</button>
+    {isShow && <Showing />}
+    
+    </>
+   )
 }
 
+
+
+
+function Showing(){
+  // const ref = useRef(null);
+  const [value , setValue] = useState('Sami')
+  const [checked , setIsChecked]= useState(false);
+
+ 
+ return(
+    <>
+    <input value={value} onChange={(e)=> 
+      {
+        setValue(e.target.value)
+       
+      }}
+        />
+    
+    <input type="checkbox" checked={checked} onChange={(e) => setIsChecked(e.target.checked)} />
+      <p>{checked ? value.toUpperCase() : value}</p>
+    
+    </>
+ )
+}
 
