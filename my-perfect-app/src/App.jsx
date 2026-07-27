@@ -1,4 +1,5 @@
 // import profilePic from './WhatsApp Image 2026-04-17 at 21.20.43.jpeg';
+// eslint-disable-next-line no-irregular-whitespace
 // import profilePicZ from './Screenshot 2026-06-19 at 10.40.26 PM.png';
 
  
@@ -606,42 +607,62 @@
 
 
 //practice
-import {  useState } from "react";
+// import {  useState } from "react";
 
 
-export default function App (){
-   const [isShow, setIsShow] = useState(false);
-   return(
-    <>
-    <button value={isShow} onClick={()=> setIsShow(!isShow)}>{isShow ? "dont show" : "show"}</button>
-    {isShow && <Showing />}
+// export default function App (){
+//    const [isShow, setIsShow] = useState(false);
+//    return(
+//     <>
+//     <button value={isShow} onClick={()=> setIsShow(!isShow)}>{isShow ? "dont show" : "show"}</button>
+//     {isShow && <Showing />}
     
-    </>
-   )
-}
+//     </>
+//    )
+// }
 
 
 
 
-function Showing(){
-  // const ref = useRef(null);
-  const [value , setValue] = useState('Sami')
-  const [checked , setIsChecked]= useState(false);
+// function Showing(){
+//   // const ref = useRef(null);
+//   const [value , setValue] = useState('Sami')
+//   const [checked , setIsChecked]= useState(false);
 
  
- return(
-    <>
-    <input value={value} onChange={(e)=> 
-      {
-        setValue(e.target.value)
+//  return(
+//     <>
+//     <input value={value} onChange={(e)=> 
+//       {
+//         setValue(e.target.value)
        
-      }}
-        />
+//       }}
+//         />
     
-    <input type="checkbox" checked={checked} onChange={(e) => setIsChecked(e.target.checked)} />
-      <p>{checked ? value.toUpperCase() : value}</p>
+//     <input type="checkbox" checked={checked} onChange={(e) => setIsChecked(e.target.checked)} />
+//       <p>{checked ? value.toUpperCase() : value}</p>
     
-    </>
- )
+//     </>
+//  )
+// }
+
+
+
+
+
+//react router
+
+import { Routes , Route } from "react-router";
+
+function Home(){
+  return(
+    <h1>Home</h1>
+  )
+}
+
+function About(){
+  return(
+    <h1>About</h1>
+  )
 }
 
